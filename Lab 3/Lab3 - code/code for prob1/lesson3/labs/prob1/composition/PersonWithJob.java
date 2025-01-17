@@ -1,4 +1,4 @@
-package lesson3.labs.prob1.solution;
+package lesson3.labs.prob1.composition;
 
 public class PersonWithJob {
 

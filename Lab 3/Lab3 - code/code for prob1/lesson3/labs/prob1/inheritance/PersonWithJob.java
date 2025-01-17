@@ -1,4 +1,4 @@
-package lesson3.labs.prob1;
+package lesson3.labs.prob1.inheritance;
 
 public class PersonWithJob extends Person {
 	
