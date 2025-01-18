@@ -8,4 +8,5 @@ public class Admin {
 		}
 		return totalRent;
 	}
+
 }
