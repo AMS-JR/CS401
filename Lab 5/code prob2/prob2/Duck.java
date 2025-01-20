@@ -4,10 +4,11 @@ import prob2.fly_behavior.*;
 import prob2.quack_behavior.*;
 
 public abstract class Duck {
-
+    QuackBehavior quackBehavior;
+    FlyBehavior flyBehavior;
     void quack(){
         String duck = this.getClass().getSimpleName();
-        QuackBehavior quackBehavior = switch(duck) {
+        quackBehavior = switch(duck) {
             case "MallarDuck" -> new Quack();
             case "DecoyDuck" -> new MuteQuack();
             case "RedheadDuck"  -> new Quack();
@@ -23,7 +24,7 @@ public abstract class Duck {
     abstract void display();
     void fly() {
         String duck = this.getClass().getSimpleName();
-        FlyBehavior flyBehavior = switch(duck) {
+        flyBehavior = switch(duck) {
             case "MallarDuck" -> new FlyWithWings();
             case "DecoyDuck" -> new CannotFly();
             case "RedheadDuck"  -> new FlyWithWings();
