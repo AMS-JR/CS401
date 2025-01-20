@@ -21,7 +21,7 @@ public class Order {
 		return ord;
 	}
 	public void addItem(String name){
-		items.add(new Item(name));
+		items.add(Item.createItem(name));
 	}
 	@Override
 	public String toString() {
