@@ -1,4 +1,4 @@
-package prob2.quackBehavior;
+package prob2.quack_behavior;
 
 public class Squeak implements QuackBehavior{
     @Override

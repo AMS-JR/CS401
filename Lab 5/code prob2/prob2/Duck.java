@@ -1,19 +1,13 @@
 package prob2;
 
-import prob2.flyBehavior.CannotFly;
-import prob2.flyBehavior.FlyBehavior;
-import prob2.flyBehavior.FlyWithWings;
-import prob2.quackBehavior.MuteQuack;
-import prob2.quackBehavior.Quack;
-import prob2.quackBehavior.QuackBehavior;
-import prob2.quackBehavior.Squeak;
+import prob2.fly_behavior.*;
+import prob2.quack_behavior.*;
 
 public abstract class Duck {
-    private FlyBehavior flyBehavior;
-    private QuackBehavior quackBehavior;
+
     void quack(){
         String duck = this.getClass().getSimpleName();
-        quackBehavior = switch(duck) {
+        QuackBehavior quackBehavior = switch(duck) {
             case "MallarDuck" -> new Quack();
             case "DecoyDuck" -> new MuteQuack();
             case "RedheadDuck"  -> new Quack();
@@ -29,7 +23,7 @@ public abstract class Duck {
     abstract void display();
     void fly() {
         String duck = this.getClass().getSimpleName();
-        flyBehavior = switch(duck) {
+        FlyBehavior flyBehavior = switch(duck) {
             case "MallarDuck" -> new FlyWithWings();
             case "DecoyDuck" -> new CannotFly();
             case "RedheadDuck"  -> new FlyWithWings();

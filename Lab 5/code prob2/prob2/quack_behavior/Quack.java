@@ -1,4 +1,4 @@
-package prob2.quackBehavior;
+package prob2.quack_behavior;
 
 public class Quack implements QuackBehavior{
     @Override

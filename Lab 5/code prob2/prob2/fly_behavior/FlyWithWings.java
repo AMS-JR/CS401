@@ -1,4 +1,4 @@
-package prob2.flyBehavior;
+package prob2.fly_behavior;
 
 public class FlyWithWings implements FlyBehavior{
     @Override
