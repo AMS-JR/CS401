@@ -3,11 +3,11 @@ package prob1;
 public class Condo extends Property {
     private int numFloors;
     Condo(int numFloors) {
-        super(400 * numFloors);
+//        super();
         this.numFloors = numFloors;
     }
     @Override
-    public double getRent() {
-        return super.getRent();
+    public double computeRent() {
+        return 500 * numFloors;
     }
 }
