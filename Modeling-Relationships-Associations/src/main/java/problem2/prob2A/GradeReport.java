@@ -4,16 +4,21 @@ public class GradeReport {
     private String grade;
     private Student student;
 
-    public GradeReport(String grade, Student student) {
-        this.grade = grade;
+    public GradeReport(Student student) {
         this.student = student;
+    }
+    public String getGrade() {
+        return grade;
+    }
+    public void setGrade(String grade) {
+        this.grade = grade;
+    }
+    public Student getStudent() {
+        return student;
     }
 
     @Override
     public String toString() {
-        return "Student{" +
-                "name=" + student.getName() +
-                ", grade=" + grade +
-                "}";
+        return  grade;
     }
 }
