@@ -7,14 +7,6 @@ public abstract class Duck {
     QuackBehavior quackBehavior;
     FlyBehavior flyBehavior;
     void quack(){
-        String duck = this.getClass().getSimpleName();
-        quackBehavior = switch(duck) {
-            case "MallarDuck" -> new Quack();
-            case "DecoyDuck" -> new MuteQuack();
-            case "RedheadDuck"  -> new Quack();
-            case "RubberDuck"  -> new Squeak();
-            default  -> new Quack();
-        };
         quackBehavior.quack();
     }
     //quack
@@ -23,14 +15,12 @@ public abstract class Duck {
     }
     abstract void display();
     void fly() {
-        String duck = this.getClass().getSimpleName();
-        flyBehavior = switch(duck) {
-            case "MallarDuck" -> new FlyWithWings();
-            case "DecoyDuck" -> new CannotFly();
-            case "RedheadDuck"  -> new FlyWithWings();
-            case "RubberDuck"  -> new CannotFly();
-            default  -> new CannotFly();
-        };
         flyBehavior.fly();
+    }
+    protected void setFlyBehavior(FlyBehavior behavior) {
+        flyBehavior = behavior;
+    }
+    protected void setQuackBehavior(QuackBehavior behavior) {
+        quackBehavior = behavior;
     }
 }
