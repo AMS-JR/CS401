@@ -7,7 +7,7 @@ public final class CustOrderFactory {
     public static Customer createCustomer(String name) {
         return Customer.newCustomer(name);
     }
-    public static Order createOrder(Customer cust, LocalDate date) {
-        return Order.newOrder(cust, date);
+    public static Order createOrder(LocalDate date) {
+        return Order.newOrder(date);
     }
 }
