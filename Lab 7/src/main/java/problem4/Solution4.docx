@@ -1,0 +1,2 @@
+﻿Using Java 8 default methods in Flyable and Quackable interfaces reduces code duplication, improves readability, and allows ducks to have flexible and extensible behavior.
+Adding new Flyable or Quackable implementations is straightforward. Similarly, new Duck types can be created with minimal boilerplate.
