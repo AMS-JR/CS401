@@ -1,0 +1,13 @@
+﻿i. When D is a class, and A, B, C are interfaces:
+
+If A defines the abstract method method() and both B and C provide default implementations, D must override method() to resolve the conflict explicitly.
+
+If only one interface (B or C) provides a default implementation, that version will be inherited by D.
+
+ii. When D is also an interface:
+
+Java allows multiple inheritance of interfaces, and the compiler resolves conflicts as follows:
+
+If both B and C provide default methods, the derived interface D must explicitly specify which one to inherit by overriding and calling the desired method (B.super.method() or C.super.method()).
+
+If neither B nor C provides a default, the method remains abstract in D.

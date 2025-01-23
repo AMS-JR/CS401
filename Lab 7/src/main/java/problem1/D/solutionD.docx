@@ -1,0 +1,8 @@
+﻿Illustrates importance of using immutable objects as keys in a hashtable:
+
+
+The issue lies in the equals and hashCode methods of the Employee class, which
+include the visited field. This causes the removeDuplicates method to treat
+employees with the same name and salary but different visited values as distinct,
+leading to incorrect behavior. The inclusion of visited in these methods
+introduces unnecessary complexity. The Person class is not immutable as is, so either make it immutable or remove the visited field from the equals and hashCode methods.

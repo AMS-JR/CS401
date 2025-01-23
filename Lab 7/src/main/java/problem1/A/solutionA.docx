@@ -1,0 +1,2 @@
+﻿Extends: AbstractList
+Implements: List, RandomAccess, Cloneable, Serializable, Iterable, and Collection

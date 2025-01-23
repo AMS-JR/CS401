@@ -1,0 +1,4 @@
+﻿Incorrect equals Method Implementation:
+
+The Employee class has an equals method that takes an Employee parameter instead
+of an Object parameter, meaning it is overloaded, not overridden. This equals method does not override the Object class equals and only adds confusion. The equals method must override public boolean equals(Object obj) for proper functionality. Since ArrayList.contains() internally uses equals(Object obj), it does not call the custom equals(Employee e) method. As a result, even though duplicates are removed, but when you used contains in listsAreEqual(List<Employee> l1, List<Employee> l2),it fails to produce the desired answer.

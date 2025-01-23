@@ -1,0 +1,6 @@
+﻿hashCode not overridden:
+
+While the equals method is correctly overridden, the HashMap in removeDuplicates
+relies on both equals and hashCode. The Employee class does not override hashCode,
+leading to inconsistent behavior when checking for duplicates in the HashMap.So in
+the method removeDuplicates(List<Employee> employees), you are checking each employee against the keys of a HashMap and you did not override the hashCode, which will lead to inconsistent behavior and generating a list of duplicates and of size more than the desired answer.
