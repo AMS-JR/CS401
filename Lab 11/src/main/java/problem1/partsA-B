@@ -1,0 +1,5 @@
+a.
+List<Number> nums = ints;
+
+b.
+nums.add(3.14);
