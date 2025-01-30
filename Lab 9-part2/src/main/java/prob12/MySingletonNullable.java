@@ -10,7 +10,6 @@ public class MySingletonNullable {
     }
     public static MySingletonNullable getInstance() {
         return Optional.ofNullable(instance).orElseGet(() -> createInstance());
-        //return Optional.ofNullable(instance).orElseGet(MySingletonOfNullable::setAndGet);
     }
 
     private static MySingletonNullable createInstance() {
