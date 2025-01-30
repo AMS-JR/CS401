@@ -1,6 +1,7 @@
 package prob1.Project4_Students.src.business;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 import prob1.Project4_Students.src.dataaccess.DataAccess;
 import prob1.Project4_Students.src.dataaccess.DataAccessFacade;
@@ -20,7 +21,10 @@ public class Main {
 		List<LibraryMember> mems = new ArrayList<>();
 		mems.addAll(members);
 		//implement
-		return null;
+		return mems.stream()
+				.filter(mem -> mem.getAddress().getZip().contains("3"))
+				.map(mem -> mem.getMemberId())
+				.collect(Collectors.toList());
 		
 	}
 	//Returns a list of all ids of  LibraryMembers that have an overdue book
@@ -30,8 +34,13 @@ public class Main {
 		List<LibraryMember> mems = new ArrayList<>();
 		mems.addAll(members);
 		//implement
-		return null;
-		
+		// This assumes the LibraryMember class has a method hasOverdueBook()
+		// Which I added
+		return members.stream()
+				.filter(LibraryMember::hasOverdueBook) // Filter members with overdue books
+				.map(LibraryMember::getMemberId)       // Extract member IDs
+				.collect(Collectors.toList());
+
 	}
 	
 	//Returns a list of all isbns of  Books that have multiple authors
@@ -41,7 +50,10 @@ public class Main {
 		List<Book> bs = new ArrayList<>();
 		bs.addAll(books);
 		//implement
-		return null;
+		return bs.stream()
+				.filter(b -> b.getAuthors().size() > 1)
+				.map(b -> b.getIsbn())
+				.collect(Collectors.toList());
 		
 		}
 

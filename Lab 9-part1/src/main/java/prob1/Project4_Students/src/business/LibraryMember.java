@@ -27,6 +27,11 @@ final public class LibraryMember extends Person implements Serializable {
 		return "Member Info: " + "ID: " + memberId + ", name: " + getFirstName() + " " + getLastName() + 
 				", " + getTelephone() + " " + getAddress();
 	}
+	public boolean hasOverdueBook() {
+		// Logic to check if the member has an overdue book
+		// For example, check their checkout records
+		return false; // Placeholder
+	}
 
 	private static final long serialVersionUID = -2226197306790714013L;
 }

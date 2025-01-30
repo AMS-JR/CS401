@@ -1,4 +1,4 @@
-package lesson9.labs.prob2;
+package prob2;
 import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -14,11 +14,14 @@ public class Main {
 	//Uses flatMap to write to console a list of all order items
 	private void showAllOrderItems() {
 		System.out.println("\n==============\nAll order items:");
-		//implement
+		orders.stream()
+				.filter(o -> o.getOrderItems().size() > 0)
+				.flatMap(o -> o.getOrderItems().stream())
+				.forEach(System.out::println);
 	}
 	
 	private void displayAllOrders() {
-		System.out.println(orders);;
+		System.out.println(orders);
 	}
 	
 	private void loadOrderData() {
