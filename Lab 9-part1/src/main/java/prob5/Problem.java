@@ -10,7 +10,7 @@ public class Problem {
 		return list1.stream()
 				.filter(el -> list2.contains(el))
                 .distinct()
-                .sorted()
+                .sorted()  // already has a natural ordering<String>
                 .collect(Collectors.toList());
 	}
 	
