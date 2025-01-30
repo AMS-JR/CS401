@@ -1,11 +1,9 @@
-package lesson9.labs.prob11a;
+package prob11a;
 
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import old.lesson9.labsolns.prob7b.Employee;
-import old.lesson9.labsolns.prob7b.TriFunction;
 
 public class Main {
 
