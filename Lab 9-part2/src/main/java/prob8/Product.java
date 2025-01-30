@@ -1,4 +1,4 @@
-package lesson9.labs.prob8;
+package prob8;
 
 public class Product {
 	private String productId;

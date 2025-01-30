@@ -1,6 +1,8 @@
-package lesson9.labs.prob8;
+package prob8;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Stream;
 
 public class Main {
 	List<OrderItem> orderItems = new ArrayList<>();
@@ -13,15 +15,11 @@ public class Main {
 	
 	private boolean findProduct(String prodName) {
 		for(OrderItem item : orderItems) {
-			if(item != null) {
-				Product p=item.getProduct();
-				if(p != null) {
-					String name = p.getProductName();
-					if(name != null) {
-						if(name.equals(prodName)) return true;
-					}
-				}
-			}
+			if(Optional.ofNullable(item).map(x -> x.getProduct())
+				.map(x -> x.getProductName()).orElse("")
+                .equalsIgnoreCase(prodName)) {
+                return true;
+            }
 		}
 		return false;
 	}
