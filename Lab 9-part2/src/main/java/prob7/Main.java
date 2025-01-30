@@ -1,4 +1,4 @@
-package lesson9.labs.prob7;
+package prob7;
 
 import java.util.*;
 import java.util.function.*;
@@ -21,7 +21,13 @@ public class Main {
 	//Using this ordering, this method sorts the list as part of 
 	//a stream pipeline, and prints to the console
 	public static void ordering1(List<Integer> list) {
-		System.out.println(/* implement */);
+		System.out.println(/* implement */
+		list.stream()
+				.sorted(Comparator
+						.comparingInt((Integer x) -> Math.abs(x))
+						.thenComparingInt(x -> x))
+				.collect(Collectors.toList())
+		);
 		
 	}
 	
@@ -34,7 +40,11 @@ public class Main {
 	//Using this ordering, this method sorts the list as part of 
 	//a stream pipeline, and prints to the console
 	public static void ordering2(List<String> words) {
-		System.out.println(/* implement */);
+		System.out.println(/* implement */
+				words.stream()
+						.sorted(Comparator.comparing(str -> new StringBuilder(str).reverse().toString()))
+						.collect(Collectors.toList())
+		);
 				
 	}
 
