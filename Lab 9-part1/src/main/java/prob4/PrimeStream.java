@@ -1,11 +1,13 @@
 package prob4;
 
+import java.util.List;
 import java.util.function.Function;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class PrimeStream {
-    private static final Stream<Integer> primes = Stream.iterate(1, n -> n+2);
+    private static final Stream<Integer> primes = Stream.iterate(1, PrimeStream::nextPrime);
     private static final Supplier<Stream<Integer>> primesVariant =
             () -> Stream.iterate(2, PrimeStream::nextPrime);
 
