@@ -89,6 +89,7 @@ final public class Book implements Serializable {
 	public List<Author> getAuthors() {
 		return authors;
 	}
+
 	
 	public String getIsbn() {
 		return isbn;

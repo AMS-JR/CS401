@@ -10,7 +10,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		System.out.println(allWhoseZipContains3());
-		System.out.println(allHavingOverdueBook());
+//		System.out.println(allHavingOverdueBook());
 		System.out.println(allHavingMultipleAuthors());
 
 	}
@@ -28,15 +28,18 @@ public class Main {
 		
 	}
 	//Returns a list of all ids of  LibraryMembers that have an overdue book
-	public static List<String> allHavingOverdueBook() {
-		DataAccess da = new DataAccessFacade();
-		Collection<LibraryMember> members = da.readMemberMap().values();
-		List<LibraryMember> mems = new ArrayList<>();
-		mems.addAll(members);
-		//implement
-		return null;
-		
-	}
+//	public static List<String> allHavingOverdueBook() {
+//		DataAccess da = new DataAccessFacade();
+//		Collection<LibraryMember> members = da.readMemberMap().values();
+//		Collection<CheckoutRecord> records = da.readCheckoutRecords();
+//
+//		return records.stream()
+//				.filter(CheckoutRecord::isOverdue)
+//				.map(record -> record.getMember().getMemberId())
+//				.distinct()
+//				.collect(Collectors.toList());
+//	}
+
 	
 	//Returns a list of all isbns of  Books that have multiple authors
 	public static List<String> allHavingMultipleAuthors() {
