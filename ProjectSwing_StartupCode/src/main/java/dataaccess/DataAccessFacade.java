@@ -170,13 +170,12 @@ public class DataAccessFacade implements DataAccess {
 	public HashMap<String, Book> readBooksMap() {
 		HashMap<String, Book> books = new HashMap<>();
 		String query = "SELECT b.isbn, b.title, b.max_checkout_length, " +
-				"       a.authorId, a.firstName AS author_first_name, a.lastName AS author_last_name, a.bio, " +
-				"       bc.copy_num, bc.is_available " +
+				"       a.authorId, a.firstName AS author_first_name, a.lastName AS author_last_name, a.bio " +
 				"FROM book b " +
 				"LEFT JOIN book_author ba ON b.isbn = ba.book_isbn " +
-				"LEFT JOIN author a ON ba.author_id = a.authorId " +
-				"LEFT JOIN book_copy bc ON b.isbn = bc.book_isbn " +
-				"ORDER BY b.isbn, bc.copy_num";
+				"LEFT JOIN author a ON ba.author_id = a.authorId";
+
+		String copiesQuery = "SELECT bc.copy_num, bc.is_available FROM book_copy bc WHERE bc.book_isbn = ?";
 
 		try (Connection conn = getConnection();
 			 Statement stmt = conn.createStatement();
@@ -204,24 +203,29 @@ public class DataAccessFacade implements DataAccess {
 
 				// Ensure the book exists in the map
 				books.putIfAbsent(isbn, new Book(isbn, title, maxCheckoutLength, authorsByIsbn.getOrDefault(isbn, new ArrayList<>())));
+			}
 
-				// Add book copies
-				int copyNum = rs.getInt("copy_num");
-				boolean isAvailable = rs.getBoolean("is_available");
-				if (!rs.wasNull() && books.containsKey(isbn)) { // Ensure book copy data is valid
-					Book book = books.get(isbn);
+			// Now, fetch the book copies for each book
+			for (Map.Entry<String, Book> entry : books.entrySet()) {
+				String isbn = entry.getKey();
+				Book book = entry.getValue();
 
-					// Create a BookCopy object for the current copy
-					BookCopy bookCopy = new BookCopy(book, copyNum, isAvailable);
-// Check if the book copy already exists using BookCopy's equals method
-					boolean copyExists = Arrays.stream(book.getCopies()).anyMatch(existingCopy -> existingCopy.equals(bookCopy));
+				book.clearCopies(); // Ensure the list is empty before adding copies
 
-					if (!copyExists) {
-						// Add the copy to the book
-						book.addCopy();
+				try (PreparedStatement pstmt = conn.prepareStatement(copiesQuery)) {
+					pstmt.setString(1, isbn);
+					try (ResultSet copyRs = pstmt.executeQuery()) {
+						while (copyRs.next()) {
+							int copyNum = copyRs.getInt("copy_num");
+							boolean isAvailable = copyRs.getBoolean("is_available");
+							BookCopy bookCopy = new BookCopy(book, copyNum, isAvailable);
+							book.addCopy(bookCopy);
+						}
 					}
 				}
 			}
+
+
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -229,6 +233,7 @@ public class DataAccessFacade implements DataAccess {
 
 		return books;
 	}
+
 
 
 
